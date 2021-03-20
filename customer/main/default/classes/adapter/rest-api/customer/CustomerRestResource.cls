@@ -4,7 +4,11 @@ global inherited sharing class CustomerRestResource {
   global static void createNewCustomer(CustomerInfo customerInfo) {
     SFTransaction sfTransaction = (SFTransaction) new TransactionFactory()
       .begin();
-    sfTransaction.save(new Customer());
+
+    Customer customer = CustomerFactory.buildFrom(customerInfo);
+
+    new CustomerService().createCustomer(sfTransaction);
+
     sfTransaction.commitZ();
   }
 }

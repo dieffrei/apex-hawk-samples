@@ -1,5 +1,5 @@
 public inherited sharing class CustomerRepositoryImpl implements CustomerRepository {
-  private QuerySpecification querySpecification;
+  private CustomerQuerySpecification querySpecification;
 
   @TestVisible
   private class CustomerBuilder implements IEntityBuilder {
@@ -9,19 +9,23 @@ public inherited sharing class CustomerRepositoryImpl implements CustomerReposit
   }
 
   @TestVisible
-  private CustomerRepositoryImpl(QuerySpecification querySpecification) {
+  private CustomerRepositoryImpl(
+    CustomerQuerySpecification querySpecification
+  ) {
     this.querySpecification = querySpecification;
   }
 
   public CustomerRepositoryImpl() {
-    //this.querySpecification = new QuerySpecification(new CustomerBuilder());
+    this.querySpecification = new CustomerQuerySpecification(
+      new CustomerBuilder()
+    );
   }
 
   public IQueryResult enrich(List<SObject> records) {
     return this.querySpecification.enrich(records);
   }
 
-  public QuerySpecification find() {
+  public CustomerQuerySpecification find() {
     return this.querySpecification;
   }
 
