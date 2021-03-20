@@ -1,8 +1,11 @@
 {
   "packageDirectories": [
     {
-      "path": "force-app",
+      "path": "customer",
       "default": true
+    },
+    {
+      "path": "order"
     }
   ],
   "namespace": "",
