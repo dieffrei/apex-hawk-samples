@@ -31,11 +31,14 @@ public inherited sharing class CustomerRepositoryImpl implements CustomerReposit
 
   public void save(ITransaction sfTransaction, Customer customer) {
     sfTransaction.save(customer);
+    for (CustomerContact contact : customer.contacts) {
+      sfTransaction.save(contact);
+    }
   }
 
   public void save(ITransaction sfTransaction, List<Customer> customers) {
     for (Customer customer : customers) {
-      sfTransaction.save(customer);
+      save(sfTransaction, customer);
     }
   }
 
@@ -45,7 +48,7 @@ public inherited sharing class CustomerRepositoryImpl implements CustomerReposit
 
   public void remove(ITransaction sfTransaction, List<Customer> customers) {
     for (Customer customer : customers) {
-      sfTransaction.remove(customer);
+      remove(sfTransaction, customer);
     }
   }
 }

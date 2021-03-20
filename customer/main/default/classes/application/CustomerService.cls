@@ -10,8 +10,20 @@ public inherited sharing class CustomerService {
     customerRepository = new CustomerRepositoryImpl();
   }
 
-  public void createCustomer(SFTransaction sfTransaction) {
-    Customer customer = new Customer();
-    this.customerRepository.save(sfTransaction, customer);
+  public void newCustomer(
+    List<CreateNewCustomerCommand> newCustomerCommands,
+    SFTransaction sfTransaction
+  ) {
+    for (CreateNewCustomerCommand newCustomerCommand : newCustomerCommands) {
+      Customer customer = CustomerFactory.buildFrom(newCustomerCommand);
+      this.customerRepository.save(sfTransaction, customer);
+    }
+  }
+
+  public void newCustomer(
+    CreateNewCustomerCommand newCustomerCommand,
+    SFTransaction sfTransaction
+  ) {
+    this.newCustomer(newCustomerCommand, sfTransaction);
   }
 }
