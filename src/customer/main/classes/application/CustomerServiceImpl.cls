@@ -13,11 +13,13 @@ public inherited sharing class CustomerServiceImpl implements CustomerService {
     }
 
     public void newCustomer(ITransaction sfTransaction, CreateNewCustomerCommand newCustomerCommand) {
-        this.newCustomer(sfTransaction, newCustomerCommand);
+        this.newCustomer(sfTransaction, new List<CreateNewCustomerCommand>{
+            newCustomerCommand
+        });
     }
 
     public Customer getCustomerById(Id customerId) {
-        return (Customer)customerRepository.find()
+        return (Customer) customerRepository.find()
             .byId(customerId)
             .toList()
             .get(0);

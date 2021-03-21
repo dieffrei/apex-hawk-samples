@@ -23,6 +23,7 @@ public virtual inherited sharing class Customer extends Entity {
 
     public Customer() {
         super(Schema.Account.SObjectType);
+        this.contacts = new List<CustomerContact>();
     }
 
     public Customer(Account record) {
