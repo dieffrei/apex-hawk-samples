@@ -12,12 +12,12 @@ public inherited sharing class Customer extends Entity {
         super(record);
     }
 
-    public void generateRandomName() {
-        this.put(Account.Name, 'Random name');
+    public void activate(){
+        this.put(Account.IsActive__c, true);
     }
 
-    public String getName() {
-        return (String) this.get(Account.Name);
+    public void deactivate(){
+        this.put(Account.IsActive__c, false);
     }
 
     public Customer addContact(CustomerContact contact) {
