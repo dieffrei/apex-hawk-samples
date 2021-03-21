@@ -11,7 +11,7 @@ global inherited sharing class CustomerRestResource {
 
         CreateNewCustomerCommand newCustomerCommand = new CreateNewCustomerCommand();
         newCustomerCommand.name = customerInfo.name;
-        customerService.newCustomer(newCustomerCommand, sfTransaction);
+        customerService.newCustomer(sfTransaction, newCustomerCommand);
 
         sfTransaction.commitZ();
     }
