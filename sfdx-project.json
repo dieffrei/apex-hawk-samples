@@ -3,6 +3,12 @@
     {
       "path": "customer",
       "default": true
+    },
+    {
+      "path": "rest-api"
+    },
+    {
+      "path": "order"
     }
   ],
   "namespace": "",

@@ -1,7 +1,24 @@
 /**
- *
+ * <h1>Customer Entity</h1>
+ * An Aggregation representing Customer and theirs contacts.
+ * Constructors are protected to ensure only Builders and Factories can build new instances of this entity.
+ * Only Exposes some attributes as protected visibility that way we prevent side effects
+ * and an <i><a href="https://martinfowler.com/bliki/AnemicDomainModel.html">Anemic Domain Mode</a></i>.
  */
-public inherited sharing class Customer extends Entity {
+public virtual inherited sharing class Customer extends Entity {
+
+    public String name {
+        get {
+            return (String) get(Account.Name);
+        }
+    }
+
+    public Boolean isActive {
+        get {
+            return (Boolean) get(Account.IsActive__c);
+        }
+    }
+
     public List<CustomerContact> contacts;
 
     public Customer() {
@@ -13,11 +30,11 @@ public inherited sharing class Customer extends Entity {
     }
 
     public void activate(){
-        this.put(Account.IsActive__c, true);
+        put(Account.IsActive__c, true);
     }
 
     public void deactivate(){
-        this.put(Account.IsActive__c, false);
+        put(Account.IsActive__c, false);
     }
 
     public Customer addContact(CustomerContact contact) {
