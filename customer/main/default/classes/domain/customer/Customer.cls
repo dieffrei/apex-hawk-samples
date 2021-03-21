@@ -2,26 +2,26 @@
  *
  */
 public inherited sharing class Customer extends Entity {
-  public List<CustomerContact> contacts;
+    public List<CustomerContact> contacts;
 
-  public Customer() {
-    super(Schema.Account.SObjectType);
-  }
+    public Customer() {
+        super(Schema.Account.SObjectType);
+    }
 
-  public Customer(Account record) {
-    super(record);
-  }
+    public Customer(Account record) {
+        super(record);
+    }
 
-  public void generateRandomName() {
-    this.put(Account.Name, 'Random name');
-  }
+    public void generateRandomName() {
+        this.put(Account.Name, 'Random name');
+    }
 
-  public String getName() {
-    return (String) this.get(Account.Name);
-  }
+    public String getName() {
+        return (String) this.get(Account.Name);
+    }
 
-  public Customer addContact(CustomerContact contact) {
-    this.contacts.add(contact);
-    return this;
-  }
+    public Customer addContact(CustomerContact contact) {
+        this.contacts.add(contact);
+        return this;
+    }
 }

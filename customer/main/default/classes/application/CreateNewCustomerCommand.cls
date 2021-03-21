@@ -1,3 +1,3 @@
 public inherited sharing class CreateNewCustomerCommand {
-  public String name;
+    public String name;
 }
