@@ -9,9 +9,7 @@ public inherited sharing class CustomerRepositoryImpl implements CustomerReposit
     }
 
     @TestVisible
-    private CustomerRepositoryImpl(
-        CustomerQuerySpecification querySpecification
-    ) {
+    private CustomerRepositoryImpl(CustomerQuerySpecification querySpecification) {
         this.querySpecification = querySpecification;
     }
 

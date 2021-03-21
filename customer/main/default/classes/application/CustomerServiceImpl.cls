@@ -1,13 +1,8 @@
 public inherited sharing class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
 
-    @TestVisible
-    private CustomerServiceImpl(CustomerRepository customerRepository) {
-        customerRepository = customerRepository;
-    }
-
     public CustomerServiceImpl() {
-        customerRepository = new CustomerRepositoryImpl();
+        customerRepository = (CustomerRepository) Injector.getInstance(CustomerRepository.class);
     }
 
     public void newCustomer(List<CreateNewCustomerCommand> newCustomerCommands, ITransaction sfTransaction) {
@@ -21,7 +16,10 @@ public inherited sharing class CustomerServiceImpl implements CustomerService {
         this.newCustomer(newCustomerCommand, sfTransaction);
     }
 
-    public Customer getCustomerById(String Id) {
-        return null;
+    public Customer getCustomerById(String customerId) {
+        return (Customer)customerRepository.find()
+            .byId(customerId)
+            .toList()
+            .get(0);
     }
 }
