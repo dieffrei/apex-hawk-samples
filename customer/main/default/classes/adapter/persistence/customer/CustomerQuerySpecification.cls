@@ -12,7 +12,8 @@ public inherited sharing class CustomerQuerySpecification extends QuerySpecifica
 
     public List<SObjectField> getSObjectFieldList() {
         return new List<SObjectField>{
-            Schema.Account.Id
+            Schema.Account.Id,
+            Schema.Account.IsActive__c
         };
     }
 }
